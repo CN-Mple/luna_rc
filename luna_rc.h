@@ -25,7 +25,7 @@ struct rc {
 };
 
 void *luna_rc_alloc(size_t size, void (*destroy)(void*));
-void luna_rc_acquire(void *data);
+void *luna_rc_acquire(void *data);
 void luna_rc_release(void *data);
 
 #endif
@@ -43,11 +43,12 @@ void *luna_rc_alloc(size_t size, void (*destroy)(void*))
 	return (_rc + 1);
 }
 
-void luna_rc_acquire(void *data)
+void *luna_rc_acquire(void *data)
 {
 	LUNA_ASSERT(data);
 	struct rc *_rc = (struct rc *)data - 1;
 	_rc->count += 1;
+	return (_rc + 1);
 }
 
 void luna_rc_release(void *data)
