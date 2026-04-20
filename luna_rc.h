@@ -24,7 +24,7 @@ struct rc {
 	void (*destroy)(void *data);
 };
 
-void *luna_rc(size_t size, void (*destroy)(void*));
+void *luna_rc_alloc(size_t size, void (*destroy)(void*));
 void luna_rc_acquire(void *data);
 void luna_rc_release(void *data);
 
@@ -33,7 +33,7 @@ void luna_rc_release(void *data);
 #define LUNA_RC_IMPLEMENTATION
 #ifdef LUNA_RC_IMPLEMENTATION
 
-void *luna_rc(size_t size, void (*destroy)(void*))
+void *luna_rc_alloc(size_t size, void (*destroy)(void*))
 {
 	LUNA_ASSERT(size > 0);
 	struct rc *_rc = LUNA_MALLOC(sizeof(struct rc) + size);
