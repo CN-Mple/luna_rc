@@ -30,7 +30,6 @@ void luna_rc_release(void *data);
 
 #endif
 
-#define LUNA_RC_IMPLEMENTATION
 #ifdef LUNA_RC_IMPLEMENTATION
 
 void *luna_rc_alloc(size_t size, void (*destroy)(void*))
