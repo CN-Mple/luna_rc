@@ -37,7 +37,7 @@ void *luna_rc_alloc(size_t size, void (*destroy)(void*))
 	LUNA_ASSERT(size > 0);
 	struct rc *_rc = LUNA_MALLOC(sizeof(struct rc) + size);
 	LUNA_ASSERT(_rc);
-	_rc->count = 1;
+	_rc->count = 0;
 	_rc->destroy = destroy;
 	return (_rc + 1);
 }
